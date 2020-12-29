@@ -12,6 +12,7 @@
 /* 头文件 ----------------------------------------------------------------*/
 #include"led.h"
 #include"key.h"
+#include"timer.h"
 /* 宏定义 ----------------------------------------------------------------*/
 /* 结构体或枚举 ----------------------------------------------------------------*/
 /* 内部函数声明 ----------------------------------------------------------------*/
@@ -51,26 +52,81 @@ void  Delay(unsigned int time)
 * 时间    ：2020/10/20
 * 描述    ：主函数入口
 ----------------------------------------------------------------*/
-void  main(void)
+void main(void)
 {
-  //Led初始化
-  LedInit();
-  KeyInit();
-  //Led所有灯灭
-  LedOff(LED_ALL_E);
-  while(1)
-  {
-    if ( KEY_PRESS == KeyStateGet( KEY_KEY1_E ) )
+    LedInit();
+    KeyInit();
+    unsigned long ulLedTimer = 0;
+    while(1)
     {
-      //消除抖动
-      Delay(100);
-      if( KEY_PRESS == KeyStateGet( KEY_KEY1_E ) )
-      {
-        LedToggle(LED_LED1_E);
-        //等待按键松开
-        while( KEY_PRESS == KeyStateGet( KEY_KEY1_E ) );
-      }
+        TIMERSET(ulLedTimer,500);
+        while(1)
+        {
+            if(TIMERCHECK(ulLedTimer))
+            {
+                LedToggle(LED_LED1_E);
+                TIMERSET(ulLedTimer,500);
+            }
+        }
     }
-  }
-  
+    while(1)
+    {
+        TIMERSET(ulLedTimer,1000);
+        while(1)
+        {
+            if(TIMERCHECK(ulLedTimer))
+            {
+                LedToggle(LED_LED2_E);
+                TIMERSET(ulLedTimer,1000);
+            }
+        }
+    }
+    while(1)
+    {
+        TIMERSET(ulLedTimer,2000);
+        while(1)
+        {
+            if(TIMERCHECK(ulLedTimer))
+            {
+                LedToggle(LED_LED3_E);
+                TIMERSET(ulLedTimer,2000);
+            }
+        }
+    }
 }
+/*void  main(void)
+{
+    //Led初始化
+    LedInit();
+    KeyInit();
+    //Led所有灯灭
+    LedOff(LED_ALL_E);
+    while(1)
+    {
+        if ( KEY_PRESS == KeyStateGet( KEY_KEY1_E ) )
+        {
+            //消除抖动
+            Delay(100);
+            if( KEY_PRESS == KeyStateGet( KEY_KEY1_E ) )
+            {
+                LedToggle(LED_LED1_E);
+                //等待按键松开
+                while( KEY_PRESS == KeyStateGet( KEY_KEY1_E ) );
+            }
+        }
+        
+    }
+    if ( KEY_PRESS == KeyStateGet( KEY_KEY2_E ) )
+    {
+        //消除抖动
+        Delay(100);
+        if( KEY_PRESS == KeyStateGet( KEY_KEY2_E ) )
+        {
+            LedToggle(LED_LED2_E);
+            //等待按键松开
+            while( KEY_PRESS == KeyStateGet( KEY_KEY2_E ) );
+        }
+    }     
+}
+*/
+

@@ -2075,6 +2075,9 @@
   <group>
     <name>Driver</name>
     <file>
+      <name>$PROJ_DIR$\..\Driver\clock.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\Driver\intp.c</name>
     </file>
     <file>
@@ -2082,6 +2085,12 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\Driver\led.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Driver\timer.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Driver\uart.c</name>
     </file>
   </group>
 </project>

@@ -9,7 +9,7 @@
 *
 *>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 /* 头文件 ----------------------------------------------------------------*/
-#include "intp.h"  
+#include"intp.h"  
 #include"led.h"
 #include"key.h"
 /* 宏定义 ----------------------------------------------------------------*/
@@ -67,6 +67,7 @@ __interrupt void P0_ISR(void)
             if( KEY_PRESS == KeyStateGet( KEY_KEY1_E ) )
             {
                 LedToggle(LED_LED1_E);
+                void Clock32MInit();
                 //等待按键松开
                 while( KEY_PRESS == KeyStateGet( KEY_KEY1_E ) );
             }
@@ -95,6 +96,7 @@ __interrupt void P2_ISR(void)
             if( KEY_PRESS == KeyStateGet( KEY_KEY2_E ) )
             {
                 LedToggle(LED_LED2_E);
+                void Clock16MInit();
                 //等待按键松开
                 while( KEY_PRESS == KeyStateGet( KEY_KEY2_E ) );
             }

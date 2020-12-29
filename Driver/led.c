@@ -39,7 +39,7 @@
 ----------------------------------------------------------------*/
 void LedInit(void)
 {
-  //P1SEL对应位设置为通用IO(清零）
+  //P1SEL对应位设置为通用IO(清零） 
    P1SEL &= 0xEC;
   //P1对应位设置为输出（置1）
    P1DIR |= 0x13;
@@ -61,35 +61,32 @@ void LedInit(void)
 * 时间    ：2020/10/17
 * 描述    ：开灯
 ----------------------------------------------------------------*/
-void  LedOn(unsigned char ucLedNum)
+void LedOn(unsigned char ucLedNum)
 {
-  if( LED_ALL_E == ucLedNum )
-  {
-    LED1 = LED_ON;
-    LED2 = LED_ON;
-    LED3 = LED_ON;
-  }
-  else if ( LED_LED1_E == ucLedNum)
-  {
-    LED1 =LED_ON;
-  
-  }
-   else if ( LED_LED2_E == ucLedNum)
-  {
-    LED2 =LED_ON;
-  
-  }
-   else if ( LED_LED3_E == ucLedNum)
-  {
-    LED3 =LED_ON;
-  
-  }
-  else
-  {
-    //do nothing
-  }
+    if(LED_ALL_E == ucLedNum)
+    {
+        LED1=LED_ON;
+        LED2=LED_ON;
+        LED3=LED_ON;
+    }
+    else if(LED_LED1_E == ucLedNum)
+    {
+        LED1 = LED_ON;
+    }
+    else if(LED_LED2_E == ucLedNum)
+    {
+        LED2 = LED_ON;
+    }
+    else if(LED_LED3_E == ucLedNum)
+    {
+        LED3 = LED_ON;
+    }
+    else
+    {
+        //do nothing
+    }
+      
 }
-
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 * 函数名  ：LedOff
@@ -129,6 +126,7 @@ void  LedOff(unsigned char ucLedNum)
   }
   
 }
+
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 * 函数名  ：LedToggle
@@ -140,24 +138,25 @@ void  LedOff(unsigned char ucLedNum)
 ----------------------------------------------------------------*/
 void  LedToggle(unsigned char ucLedNum)
 {
-  if ( LED_LED1_E == ucLedNum)
-  {
-    LED1 =LED_OFF;
-    LED2 =LED_ON;
-    LED3 =LED_ON;
-  }
-   else if ( LED_LED2_E == ucLedNum)
-  {
-    LED1 =LED_ON;
-    LED2 =LED_OFF;
-    LED3 =LED_ON;
-  }
-   else if ( LED_LED3_E == ucLedNum)
-  {
-    LED1 =LED_ON;
-    LED2 =LED_ON;
-    LED3 =LED_OFF;
-  } 
+    if ( LED_ALL_E == ucLedNum)
+    {
+        LED1 =! LED1;
+        LED2 =! LED2;
+        LED3 =! LED3;
+    }
+    else if ( LED_LED1_E == ucLedNum)
+    {
+        LED1 =! LED1;
+    }
+    else if ( LED_LED2_E == ucLedNum)
+    {
+        LED2 =! LED2;
+    }
+    else if ( LED_LED3_E == ucLedNum)
+    {
+        LED3 =! LED3;
+    } 
+    
   
   
 }
