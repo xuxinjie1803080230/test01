@@ -10,9 +10,13 @@
 *>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 
 /* 头文件 ----------------------------------------------------------------*/
-#include"led.h"
-#include"key.h"
-#include"timer.h"
+#include<ioCC2530.h>
+#include "key.h"
+#include "led.h"
+#include "intp.h"
+#include "timer.h"
+#include"uart.h"
+unsigned int temp = 0;
 /* 宏定义 ----------------------------------------------------------------*/
 /* 结构体或枚举 ----------------------------------------------------------------*/
 /* 内部函数声明 ----------------------------------------------------------------*/
@@ -52,7 +56,21 @@ void  Delay(unsigned int time)
 * 时间    ：2020/10/20
 * 描述    ：主函数入口
 ----------------------------------------------------------------*/
-void main(void)
+int main(void)
+{
+    unsigned char Buf[] = "Hello World!";
+    UartInit();
+    UartSend(Buf, 12);
+    while(1)
+    {
+        
+    }
+}
+
+
+
+
+/*void main(void)
 {
     LedInit();
     KeyInit();
@@ -94,7 +112,7 @@ void main(void)
         }
     }
 }
-/*void  main(void)
+void  main(void)
 {
     //Led初始化
     LedInit();
